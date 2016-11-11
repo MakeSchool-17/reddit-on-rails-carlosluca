@@ -1,5 +1,6 @@
 class Subreddit < ApplicationRecord
-  validates :name, :title, :description, :sidebar, presence: true
+  validates :name, length: { max: 21 }, presence: true, uniqueness: true
+  validates :title, :description, :sidebar, presence: true
 
   belongs_to :user
   has_many :posts, dependent: :delete_all
